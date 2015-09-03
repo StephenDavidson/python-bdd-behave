@@ -16,7 +16,3 @@ class HomePage(base.BasePage):
     @property
     def search_button(self):
         return self.browser.find_by_id(self.locators.SEARCH_BUTTON)[0]
-
-    @property
-    def first_search_result(self):
-        return self.browser.find_by_css(self.locators.FIRST_RESULT_TITLE)
