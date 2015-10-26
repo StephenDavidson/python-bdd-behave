@@ -5,7 +5,6 @@ Feature: Search
 
 
   Scenario: User would like to search for a topic
-    When I enter test into the search field
-    And I click on the search button
+    When I search for test
     Then I should be on the results page
     And the first search result should be visible
