@@ -1,4 +1,6 @@
 # python-bdd-behave
+![Travis](https://travis-ci.org/StephenDavidson/python-bdd-behave.svg?branch=master)
+[![Requirements Status](https://requires.io/github/StephenDavidson/python-bdd-behave/requirements.svg?branch=master)](https://requires.io/github/StephenDavidson/python-bdd-behave/requirements/?branch=master)
 
 Example python bdd project using behave for this [blog post](http://www.shdavidson.com/2015/09/03/python-bdd-behave/).
 
