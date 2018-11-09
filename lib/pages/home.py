@@ -1,4 +1,4 @@
-import base
+from . import base
 import lib.locators.home as locators
 
 

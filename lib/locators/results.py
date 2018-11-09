@@ -1,4 +1,4 @@
-import base
+from . import base
 
 
 class ResultsLocators(base.BaseLocators):

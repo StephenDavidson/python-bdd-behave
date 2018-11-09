@@ -1,6 +1,6 @@
 __author__ = 'Stephen'
 
-import os, types, yaml
+import os, yaml
 
 # Fetch environment from os environment variables
 env = os.getenv('ENV', 'production')
@@ -16,7 +16,7 @@ def merge_dicts(x,y):
     # then we need to put back any missing x[key] values
     for key in xkeys:
         # if this key is a dictionary, recurse
-        if type(x[key]) is types.DictType and y.has_key(key):
+        if isinstance(x[key], dict) and y.has_key(key):
             merged[key] = merge_dicts(x[key],y[key])
 
     return merged

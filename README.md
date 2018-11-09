@@ -6,6 +6,8 @@ Example python bdd project using behave for this [blog post](http://www.shdavids
 
 ## setup
 
+Requires `python >= 3.0`
+
 ```shell
 git clone git@github.com:StephenDavidson/python-bdd-behave.git
 cd python-bdd-behave
@@ -22,5 +24,5 @@ behave features/search.feature # run the search.feature file only
 ## env variables
 variable  | default value
 ------------- | -------------
-BROWSER  | firefox
+BROWSER  | chrome
 ENV  | production

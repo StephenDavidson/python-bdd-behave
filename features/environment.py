@@ -1,12 +1,17 @@
 import os, time
-
 import faker, splinter
+
+from selenium.webdriver import Chrome
+from selenium.webdriver.chrome.options import Options
+from splinter.driver.webdriver import BaseWebDriver, WebDriverElement
+
 from behave.log_capture import capture
 
 import config
 
 @capture
 def before_all(context):
+
     # Add fake factory
     context.fake = faker.Faker()
 
@@ -22,8 +27,21 @@ def before_all(context):
 @capture
 def before_scenario(context, scenario):
 
+    browser_name = os.getenv('BROWSER', 'chrome')
+    if browser_name == 'chrome' and os.getenv('HEADLESS') == 'true':
+        options = Options()
+        options.add_argument('--no-sandbox')
+        options.add_argument('--headless')
+        options.add_argument('--disable-gpu')
+
+        browser = BaseWebDriver()
+        browser.driver = Chrome(chrome_options=options)
+        browser.element_class = WebDriverElement
+    else:
+        browser = splinter.Browser(driver_name=browser_name)
+
     # Initialize browser and add driver to global context
-    context.browser = splinter.Browser(driver_name=os.getenv('BROWSER', 'firefox'))
+    context.browser = browser
 
 
 @capture
@@ -34,7 +52,7 @@ def after_scenario(context, scenario):
         make_dir(scenario_error_dir)
         scenario_file_path = os.path.join(scenario_error_dir, scenario.feature.name.replace(' ', '_')
                                           + '_' + time.strftime("%H%M%S_%d_%m_%Y")
-                                          + '.jpg')
+                                          + '.png')
         context.browser.driver.save_screenshot(scenario_file_path)
 
     context.browser.quit()
