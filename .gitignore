@@ -1,5 +1,5 @@
 ENV/
 geckodriver.log
 .idea/
-artifacts
+artifacts/
 *.pyc

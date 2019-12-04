@@ -6,7 +6,7 @@ Example python bdd project using behave for this [blog post](http://www.shdavids
 
 ## setup
 
-Requires `python >= 3.0`
+Requires `python >= 3.5`
 
 ```shell
 git clone git@github.com:StephenDavidson/python-bdd-behave.git
@@ -19,6 +19,7 @@ pip install -r requirements.txt
 behave # run all feature files
 behave features/ # run all feature files in the given folder
 behave features/search.feature # run the search.feature file only
+HEADLESS=true behave # run headless chrome
 ```
 
 ## env variables

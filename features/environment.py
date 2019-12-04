@@ -1,9 +1,8 @@
-import os, time
-import faker, splinter
-
-from selenium.webdriver import Chrome
-from selenium.webdriver.chrome.options import Options
-from splinter.driver.webdriver import BaseWebDriver, WebDriverElement
+import os
+import time
+import faker
+import splinter
+import chromedriver_binary
 
 from behave.log_capture import capture
 
@@ -29,14 +28,7 @@ def before_scenario(context, scenario):
 
     browser_name = os.getenv('BROWSER', 'chrome')
     if browser_name == 'chrome' and os.getenv('HEADLESS') == 'true':
-        options = Options()
-        options.add_argument('--no-sandbox')
-        options.add_argument('--headless')
-        options.add_argument('--disable-gpu')
-
-        browser = BaseWebDriver()
-        browser.driver = Chrome(chrome_options=options)
-        browser.element_class = WebDriverElement
+        browser = splinter.Browser('chrome', headless=True)
     else:
         browser = splinter.Browser(driver_name=browser_name)
 
