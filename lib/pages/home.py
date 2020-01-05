@@ -11,8 +11,8 @@ class HomePage(base.BasePage):
 
     @property
     def search_field(self):
-        return self.browser.find_by_id(self.locators.SEARCH_FIELD)[0]
+        return self.browser.find_by_css(self.locators.SEARCH_FIELD)[0]
 
     @property
     def search_button(self):
-        return self.browser.find_by_id(self.locators.SEARCH_BUTTON)[0]
+        return self.browser.find_by_css(self.locators.SEARCH_BUTTON)[0]
